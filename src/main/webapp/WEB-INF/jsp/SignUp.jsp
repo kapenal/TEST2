@@ -27,9 +27,7 @@ const form = new dhx.Form("form", {
             validation: function(value) {
                 return value && value.length > 2;
             },
-            errorMessage: "3글자 이하입니다",
-            successMessage: "3글자 이상입니다",
-            preMessage: "3글자 이상 입력해주세요",
+            errorMessage: "2글자 이하입니다",
             required: true
         },
         {
@@ -40,11 +38,9 @@ const form = new dhx.Form("form", {
             label: "PASSWORD",
             placeholder: "********",
             validation: function(value) {
-                return value && value.length > 2;
+                return value && value.length > 6;
             },
-            errorMessage: "3글자 이하입니다",
-            successMessage: "3글자 이상입니다",
-            preMessage: "비밀번호를 입력해주세요",
+            errorMessage: "6글자 이하입니다",
             required: true
         },
         {
@@ -58,7 +54,6 @@ const form = new dhx.Form("form", {
                 return value.length > 1;
             },
             errorMessage: "이름을 입력해주세요",
-            successMessage: "",
             required: true
         },
 		{
@@ -69,7 +64,6 @@ const form = new dhx.Form("form", {
             labelPosition: "top",
             labelWidth: 140,
             required: true,
-            value: "",
             options: [
                 {
                 	content: "A",
@@ -133,7 +127,8 @@ function signUpAjax() {
 				alert("중복되는 ID입니다");
 				form.getItem("id").clear();
 			} else{
-				window.location.href = '/NotLogin/getLogin';
+				location.replace('/NotLogin/getLogin'); 
+				/* window.location.href = '/NotLogin/getLogin'; */
 			}
 		},
 	    error : function() {
