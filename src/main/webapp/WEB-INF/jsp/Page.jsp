@@ -11,14 +11,27 @@
 </head>
 <body style="margin: 20px;">
 	<h1>▼ 등록된 유저 조회</h1>
-	<button type="button" id="selectBtn" class="dhx_sample-btn dhx_sample-btn--flat">조회</button> <button type="button" id="logOutBtn" onclick="location.href='/LOGIN/logOut'" class="dhx_sample-btn dhx_sample-btn--flat">로그아웃</button>
-	<div id="grid" style="height: 800px"></div>
+	<button type="button" id="selectBtn">조회</button> <button type="button" id="logOutBtn" onclick="location.href='/LOGIN/logOut'">로그아웃</button>
+	<form method="post" enctype="multipart/form-data" action="/LOGIN/FileUpload" id="addFileUploadForm" style="display:inline">
+		<input type="file" id="uploadFile" name="uploadFile" required="required">
+		<button type="button" id="uploadFileBtn">업로드</button>
+	</form>
+	<div id="grid" style="height: 100%"></div>
 </body>
 <script type="text/javascript">
 $(function(){
 	$('#selectBtn').click(function(){
 		list();
 	});
+	$('#uploadFileBtn').click(function(e){
+		var fileValue = $('#uploadFile').val();
+		if(!/\.(dbfile)$/i.test(fileValue)){ // 정규표현식
+			alert('dbfile 파일만 선택해 주세요.\n\n현재 파일 : ' + fileValue);
+		} else{
+			console.log('확장자 일치');
+			$('#addFileUploadForm').submit();
+		}
+	});			
 });
 
 const grid = new dhx.Grid("grid", {
@@ -31,7 +44,8 @@ const grid = new dhx.Grid("grid", {
         { id: "regDate", header: [{ text: "REG DATE" }] },
     ],
     editable: true,
-    autoWidth: true
+    autoWidth: true,
+    height: 700	
 });
 function list() {
 	$.ajax({

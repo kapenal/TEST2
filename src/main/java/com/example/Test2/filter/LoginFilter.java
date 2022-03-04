@@ -15,20 +15,17 @@ import javax.servlet.http.HttpSession;
 
 import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 
-
 @WebFilter("/LOGIN/*")
 public class LoginFilter extends HttpFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
-		System.out.println(session.getAttribute("loginId") + "LOGINsession확인");
 		if(session.getAttribute("loginId") == null) {
-			System.out.println("강제이동");
+			// System.out.println("강제이동");
 			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath()+"/NotLogin/getLogin");
 			return;
 		}
 		
 		super.doFilter(request, response, chain);
 	}
-
 }

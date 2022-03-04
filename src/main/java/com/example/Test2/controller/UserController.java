@@ -18,7 +18,6 @@ public class UserController {
 	@GetMapping("/LOGIN/userList")
 	public List<User> selectUserList() throws ParseException {
 		List<User> userList = userMapper.selectUserData();
-		// System.out.println(userList + "ajax 호출");
 		return userList;
 	}
 }

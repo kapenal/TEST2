@@ -38,9 +38,9 @@ const form = new dhx.Form("form", {
             label: "PASSWORD",
             placeholder: "********",
             validation: function(value) {
-                return value && value.length > 6;
+                return value && value.length > 3;
             },
-            errorMessage: "6글자 이하입니다",
+            errorMessage: "3글자 이하입니다",
             required: true
         },
         {

@@ -18,9 +18,8 @@ public class NotLoginFilter extends HttpFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
-		System.out.println(session.getAttribute("loginId") + "NOTLOGINsession확인");
 		if(session.getAttribute("loginId") != null) {
-			System.out.println("강제이동");
+			// System.out.println("강제이동");
 			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath()+"/LOGIN/page");
 			return;
 		}

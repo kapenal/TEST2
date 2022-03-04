@@ -16,14 +16,9 @@ public class LoginController {
 	
 	@PostMapping("/NotLogin/login")
 	public String Login(HttpSession session, User user) {
-		System.out.println(user.toString());
+		// System.out.println(user.toString());
 		String id = loginService.login(user);
-		if(id == null) {
-			System.out.println("로그인 실패!");
-			return id;
-		}
 		session.setAttribute("loginId", id);
-		System.out.println("로그인 성공!");
 		return id;
 	}	
 }

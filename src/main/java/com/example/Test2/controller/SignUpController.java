@@ -18,7 +18,7 @@ public class SignUpController {
 
 	@PostMapping("/NotLogin/insertSignUp")
 	public int insertSignUp(User user) {
-		System.out.println(user.toString());
+		// System.out.println(user.toString());
 		int result = signUpService.insertSignUp(user);
 		return result;
 	}

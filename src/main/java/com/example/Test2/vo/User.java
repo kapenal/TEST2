@@ -7,7 +7,7 @@ public class User {
 	private String id;
 	private String pwd;
 	private String name;
-	private String level;
+	private char level;
 	private String desc;
 	private String regDate;
 	
