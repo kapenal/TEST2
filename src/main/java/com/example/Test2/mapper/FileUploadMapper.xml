@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.Test2.mapper.FileUploadMapper">
-	<insert id="fileUpload" parameterType="com.example.Test2.vo.User">
-		INSERT INTO "user" (id, pwd, name, level, "desc", reg_date) 
-		VALUES
-		(#{id}, #{pwd}, #{name}, #{level}, #{desc}, #{regDate}::timestamp)
-		
-		<selectKey keyColumn="id,pwd,name,level,desc,regDate" keyProperty="id,pwd,name,level,desc,regDate" order="AFTER" resultType="com.example.Test2.vo.User">
-			SELECT  id id, pwd pwd, name name, level level, "desc" desc, to_char(reg_date, 'YYYY년MM월DD일 HH24시MI분') as regDate
-			FROM public."user"
-			WHERE id = #{id}
-		</selectKey>
-	</insert>
+	<select id="fileUpload" parameterType="java.util.List" resultType="com.example.Test2.vo.User">
+		with inserted as (
+			INSERT INTO "user" (id, pwd, name, level, "desc", reg_date) 
+			VALUES
+			<foreach collection="userList" item="item" separator=" , ">
+				(#{item.id}, #{item.pwd}, #{item.name}, #{item.level}, #{item.desc}, #{item.regDate}::timestamp)
+			</foreach>
+			ON CONFLICT (id)
+	        DO NOTHING
+	        returning id,pwd,name,level,"desc",reg_date
+		)
+		SELECT id id, pwd pwd, name name, level level, "desc" desc, to_char(reg_date, 'YYYY년MM월DD일 HH24시MI분') as regDate 
+		FROM inserted
+	</select>
 </mapper>
