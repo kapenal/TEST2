@@ -39,7 +39,6 @@ public class FileUploadController {
 		    fos.write(uploadFile.getBytes());
 		    fos.close();
 		} catch (IOException e1) {
-			// System.out.println("예외 발생!");
 			e1.printStackTrace();
 		}
 		//생성된 file을 스캐너로 파일 읽기
@@ -55,7 +54,6 @@ public class FileUploadController {
 			}
 			userList = fileUploadService.upload(list);
 		} catch (FileNotFoundException e) {
-			// System.out.println("예외 발생!");
 			e.printStackTrace();
 		}
 		System.out.println(file.getAbsolutePath());

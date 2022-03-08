@@ -16,7 +16,7 @@ public class LoginService {
 		try {
 			id = loginMapper.login(user);
 		} catch (Exception e) {
-			// System.out.println("로그인 실패!");
+			e.printStackTrace();
 		}
 		return id;
 	}

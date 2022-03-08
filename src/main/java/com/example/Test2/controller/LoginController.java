@@ -16,7 +16,6 @@ public class LoginController {
 	
 	@PostMapping("/NotLogin/login")
 	public String Login(HttpSession session, User user) {
-		// System.out.println(user.toString());
 		String id = loginService.login(user);
 		session.setAttribute("loginId", id);
 		return id;

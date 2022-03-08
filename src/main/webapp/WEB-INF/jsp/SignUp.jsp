@@ -65,6 +65,11 @@ const form = new dhx.Form("form", {
             labelWidth: 140,
             required: true,
             options: [
+            	{
+                	content: "",
+                    value: "",
+                    disabled: true
+                },
                 {
                 	content: "A",
                     value: "A"
@@ -105,7 +110,6 @@ $(function() {
 		console.log(form.validate());
 		if(form.validate() == true){
 			signUpAjax();
-			/* form.send("/NotLogin/insertSignUp", "POST", "user"); */
 		}else{
 			alert("필수사항을 입력해주세요");
 		}
@@ -127,8 +131,7 @@ function signUpAjax() {
 				alert("중복되는 ID입니다");
 				form.getItem("id").clear();
 			} else{
-				location.replace('/NotLogin/getLogin'); 
-				/* window.location.href = '/NotLogin/getLogin'; */
+				location.replace('/NotLogin/getLogin');
 			}
 		},
 	    error : function() {

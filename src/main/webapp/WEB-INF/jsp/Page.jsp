@@ -32,7 +32,6 @@ $(function(){
 		} else{
 			console.log('확장자 일치');
 			upload();
-			/* $('#addFileUploadForm').submit(); */
 		}
 	});			
 });
@@ -61,8 +60,7 @@ function list() {
 	});
 }
 function upload(){
-	var form = $('#addFileUploadForm')[0];  	    
-    // Create an FormData object          
+	var form = $('#addFileUploadForm')[0];  
     var data = new FormData(form);  
 	$.ajax({
 		type: "post",          

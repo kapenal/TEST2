@@ -80,10 +80,7 @@ function loginAjax() {
 	       if (ID == '') {
 	            alert('ID와 비밀번호를 확인해주십쇼');
 	        }else {
-	        	/* location.replace()함수는 히스토리를 남기지않기때문에 뒤로가기 차단
-	        	window.location.href=''는 히스토리를 남기기때문에 뒤로가기 가능 */
 	        	location.replace('/LOGIN/page'); 
-	            /* window.location.href = '/LOGIN/page'; */
 	        }
 	    },
 	    error : function() {
