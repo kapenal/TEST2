@@ -20,6 +20,7 @@ public class LoginFilter extends HttpFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
+		// session loginId가 null이면 로그인이 안된 상태이기때문에 Page.jsp 이동 필터가 실행되어서 로그인화면으로 이동
 		if(session.getAttribute("loginId") == null) {
 			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath()+"/NotLogin/getLogin");
 			return;

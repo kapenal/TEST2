@@ -76,7 +76,7 @@ function loginAjax() {
 	  	  pwd : form.getValue()['pwd'],
 	    },
 	    success : function(ID) {
-	  	  console.log(ID + "성공");
+	  	  // ajax데이터의 id가 존재하면 로그인된것이고 id가 ''이면 로그인 실패
 	       if (ID == '') {
 	            alert('ID와 비밀번호를 확인해주십쇼');
 	        }else {

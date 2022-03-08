@@ -17,6 +17,7 @@ public class FileUploadService {
 	public List<User> upload(List<String> userLine) {
 		List<User> insertUser = new ArrayList<>();
 		List<User> userList = new ArrayList<>();
+		// 매겨변수로 받은 List<String>타입의 userLine을 split을 이용하여 List<User>타입의 userList에 입력
 		for(String i : userLine) {
 			String[] array = i.split("/");
 			User user = new User();
@@ -28,8 +29,6 @@ public class FileUploadService {
 			user.setRegDate(array[5]);
 			userList.add(user);
 		}
-		// if문을 사용하여 매개변수의 길이가 6이 아니면 DB의 저장이 안되도록 함
-		// 공백도 길이의 포함되기 때문에 컬럼에 공백값이 있어도 실행 가능
 		try {
 			insertUser = fileUploadMapper.fileUpload(userList);
 		} catch (Exception e) {

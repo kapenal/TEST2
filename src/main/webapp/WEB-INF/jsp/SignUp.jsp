@@ -108,6 +108,7 @@ $(function() {
 	form.getItem("signBtn").events.on("click", function () {
 		console.log(form.getValue());
 		console.log(form.validate());
+		// 필수 사항으로 적어야하는 form이 true값이면 ajax 실행
 		if(form.validate() == true){
 			signUpAjax();
 		}else{
@@ -127,6 +128,7 @@ function signUpAjax() {
 	  	  desc : form.getValue()['desc']
 	    },
 	    success : function(result) {
+	    	// 회원가입 id를 DB에 조회하여 ID가 존재하면 중복되는 ID라는 alert창을 띄우고 입력한 id input을 clear
 			if(result == 0){
 				alert("중복되는 ID입니다");
 				form.getItem("id").clear();

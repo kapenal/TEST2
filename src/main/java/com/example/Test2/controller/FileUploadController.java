@@ -52,6 +52,7 @@ public class FileUploadController {
 				 String userLine = scan.nextLine();
 				 list.add(userLine);
 			}
+			// userList에 파일 업로드의 성공한 데이터를 입력
 			userList = fileUploadService.upload(list);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

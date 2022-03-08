@@ -27,10 +27,9 @@ $(function(){
 	});
 	$('#uploadFileBtn').click(function(e){
 		var fileValue = $('#uploadFile').val();
-		if(!/\.(dbfile)$/i.test(fileValue)){ // 정규표현식
+		if(!/\.(dbfile)$/i.test(fileValue)){ // 정규표현식을 이용한 .dbfile만 파일 업로드가 가능하도록 함
 			alert('dbfile 파일만 선택해 주세요.\n\n현재 파일 : ' + fileValue);
 		} else{
-			console.log('확장자 일치');
 			upload();
 		}
 	});			
@@ -54,7 +53,6 @@ function list() {
 		type:'get',
 		url:'userList',
 		success:function(json){
-			console.log(json);
 			grid.data.parse(json);
 		}
 	});
@@ -71,7 +69,6 @@ function upload(){
         cache: false,
 		data: data,
 		success:function(json){
-			console.log(json);
 			alert("업로드 성공"+json.sucessCount+"건 실패"+json.failCount+"건");
 			$('#addFileUploadForm')[0].reset();
 			grid.data.parse(json.userList);
